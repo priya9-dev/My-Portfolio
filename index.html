@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priya | ServiceNow Developer</title>
+<meta name="description" content="Portfolio of Priya, an aspiring ServiceNow Developer with skills in ITSM, CMDB, JavaScript and Java.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#040442; --bg-deep:#02022b; --panel:#0b0b5c; --line:rgba(255,255,255,.18);
+  --text:#f2f2ff; --muted:#b9b9e6; --accent:#9fa1ff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font-family:'Sora',system-ui,sans-serif;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{width:min(1100px,100% - 40px);margin:0 auto}
+
+/* Nav */
+header{position:sticky;top:0;z-index:10;background:var(--bg-deep);border-bottom:1px solid var(--line)}
+nav{display:flex;justify-content:space-between;align-items:center;height:72px}
+.brand{font-weight:600;font-size:1.15rem;text-decoration:none}
+nav ul{display:flex;gap:6px;list-style:none}
+nav ul a{display:block;padding:8px 14px;text-decoration:none;font-size:.95rem;color:var(--muted);border-radius:20px;transition:color .2s,background .2s}
+nav ul a:hover{color:#fff;background:rgba(159,161,255,.15)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:#fff;padding:8px 14px;border-radius:20px;font:inherit;font-size:.9rem;cursor:pointer}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:96px 0}
+.hero h1{font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.2;font-weight:700}
+.hero h1 .role{display:block;font-weight:300;color:var(--accent);min-height:1.3em}
+.hero p{margin:20px 0 32px;color:var(--muted);max-width:46ch}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:12px 24px;border:1px solid #fff;border-radius:30px;background:transparent;color:#fff;text-decoration:none;font-size:.9rem;transition:background .2s,color .2s}
+.btn:hover{background:#fff;color:var(--bg)}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:var(--bg-deep);font-weight:600}
+.btn.solid:hover{background:#fff;border-color:#fff}
+.photo{justify-self:center;width:min(100%,380px);aspect-ratio:1;border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:16px 16px 0 var(--panel)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2{font-size:1.7rem;margin-bottom:8px}
+.lead{color:var(--muted);max-width:60ch;margin-bottom:36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
+.card h3{font-size:1.05rem;margin-bottom:12px;color:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none}
+.tags li{padding:4px 12px;border:1px solid var(--line);border-radius:20px;font-size:.82rem;color:var(--text)}
+
+/* Project / education */
+.project{display:grid;grid-template-columns:1.4fr 1fr;gap:32px}
+.project ul,.cert-list{margin-left:18px;color:var(--muted)}
+.project li,.cert-list li{margin-bottom:8px}
+.project h3{font-size:1.25rem;margin-bottom:6px}
+.stack{margin-bottom:16px;font-size:.85rem;color:var(--accent)}
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.edu .period{color:var(--accent);font-size:.9rem}
+
+/* Contact */
+.contact-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.contact-list li{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 22px;overflow-wrap:anywhere}
+.contact-list small{display:block;color:var(--muted)}
+.contact-list a{text-decoration:none}
+.contact-list a:hover{color:var(--accent)}
+footer{padding:28px 0;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+
+/* Responsive */
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding:56px 0;gap:40px}
+  .photo{order:-1;width:min(70%,280px);box-shadow:10px 10px 0 var(--panel)}
+  .project,.edu{grid-template-columns:1fr}
+  .menu-btn{display:block}
+  nav ul{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:var(--bg-deep);padding:12px 20px 20px;border-bottom:1px solid var(--line)}
+  nav ul.open{display:flex}
+  nav ul a{padding:12px 8px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <nav class="wrap" aria-label="Main">
+    <a class="brand" href="#home">My Portfolio</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+    <ul id="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact Me</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero" id="home" style="border-top:0">
+      <div>
+        <h1>Hi, my name is Priya
+          <span class="role" style="color:var(--text);font-weight:700">Aspiring as a</span>
+          <span class="role"><span id="element">ServiceNow Developer</span></span>
+        </h1>
+        <p>I build and configure ServiceNow solutions across ITSM, CMDB and Service Portal, using JavaScript, Java and SQL. I enjoy turning business needs into efficient, working workflows.</p>
+        <div class="btns">
+          <a class="btn solid" href="mycv.pdf" download>Download Resume</a>
+          <a class="btn" href="https://github.com/priya9-dev" target="_blank" rel="noopener">Visit GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/priya-3ba61b324" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="photo"><img src="pimage2.jpg" alt="Portrait of Priya" width="380" height="380"></div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <p class="lead">Hands-on with the ServiceNow platform and the web technologies behind it.</p>
+      <div class="grid">
+        <div class="card"><h3>ServiceNow ITSM</h3>
+          <ul class="tags"><li>Incident</li><li>Problem</li><li>Change</li><li>SLA</li><li>ACL</li><li>Catalog Items</li><li>Notifications</li><li>Scheduled Jobs</li><li>Reports &amp; Dashboards</li></ul></div>
+        <div class="card"><h3>ServiceNow Development</h3>
+          <ul class="tags"><li>Business Rules</li><li>Client Scripts</li><li>Server Scripts</li><li>Script Includes</li><li>UI Policies</li><li>UI Actions</li><li>Form Design</li><li>Flow Designer</li><li>Service Portal</li><li>REST APIs</li><li>Update Sets</li></ul></div>
+        <div class="card"><h3>CMDB / CSDM</h3>
+          <ul class="tags"><li>CMDB Health Dashboard</li><li>Health Inclusion Rules</li><li>Data Cleanup</li><li>Archive Policies</li></ul></div>
+        <div class="card"><h3>Programming</h3>
+          <ul class="tags"><li>JavaScript</li><li>Java</li><li>OOPS</li><li>SQL</li><li>HTML</li><li>CSS</li></ul></div>
+        <div class="card"><h3>Tools</h3>
+          <ul class="tags"><li>ServiceNow Platform</li><li>Visual Studio Code</li><li>GitHub Pages</li></ul></div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <p class="lead">A hands-on web project that shows my front-end fundamentals.</p>
+      <article class="card project">
+        <div>
+          <h3>Random Password Generator</h3>
+          <p class="stack">HTML, CSS, JavaScript</p>
+          <ul>
+            <li>Built a responsive, web-based password generator.</li>
+            <li>Added options for length, uppercase and lowercase letters, numbers and symbols.</li>
+            <li>Used DOM manipulation and event handling for real-time results.</li>
+            <li>Deployed on GitHub Pages for live access.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size:1rem;color:var(--accent)">Key features</h3>
+          <ul>
+            <li>Generate passwords instantly</li>
+            <li>Choose password length</li>
+            <li>Include numbers and special characters</li>
+            <li>Include uppercase and lowercase</li>
+          </ul>
+          <div class="btns" style="margin-top:20px">
+            <a class="btn" href="https://priya9-dev.github.io/Generate-Random-Password/" target="_blank" rel="noopener">View live project</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="education">
+      <h2>Education &amp; Certifications</h2>
+      <p class="lead">Formal study in computer applications, backed by ServiceNow and Java credentials.</p>
+      <div class="edu">
+        <div class="card">
+          <h3>Bachelor of Computer Applications (BCA)</h3>
+          <p>Hindu Girls College, MDU University</p>
+          <p class="period">2022 to 2025</p>
+        </div>
+        <div class="card">
+          <h3>Certifications</h3>
+          <ul class="cert-list">
+            <li>CMDB and CSDM Certified, ServiceNow</li>
+            <li>Java Developer Certified, Anudip Foundation</li>
+            <li>Employability Skill Training Program, Mahindra Pride</li>
+            <li>Welcome to ServiceNow Badge, RiseUp With ServiceNow</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p class="lead">Open to ServiceNow developer roles and internships. Reach out any time.</p>
+      <ul class="contact-list">
+        <li><small>Email</small><a href="mailto:priya.0183739@gmail.com">priya.0183739@gmail.com</a></li>
+        <li><small>Phone</small><a href="tel:+919817016845">+91 98170 16845</a></li>
+        <li><small>LinkedIn</small><a href="https://www.linkedin.com/in/priya-3ba61b324" target="_blank" rel="noopener">linkedin.com/in/priya-3ba61b324</a></li>
+        <li><small>GitHub</small><a href="https://github.com/priya9-dev" target="_blank" rel="noopener">github.com/priya9-dev</a></li>
+        <li><small>Location</small>Sonipat, Haryana</li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer>&copy; <span id="year"></span> Priya. All rights reserved.</footer>
+
+<script src="https://unpkg.com/typed.js@3.0.0/dist/typed.umd.js"></script>
+<script>
+  // Typing effect (skipped if the library fails to load or motion is reduced)
+  if (window.Typed && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.getElementById('element').textContent = '';
+    new Typed('#element', { strings: ['ServiceNow Developer'], typeSpeed: 50 });
+  }
+  // Mobile menu
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+  btn.addEventListener('click', function () {
+    var open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  menu.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { menu.classList.remove('open'); btn.setAttribute('aria-expanded', false); }
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
